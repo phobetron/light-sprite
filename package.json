@@ -1,0 +1,56 @@
+{
+  "name": "light-sprite",
+  "version": "1.0.0",
+  "description": "Renderer-independent WebGL light markers with safe wandering, lighting, and automatic model bounds.",
+  "type": "module",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phobetron/light-sprite.git"
+  },
+  "homepage": "https://github.com/phobetron/light-sprite#readme",
+  "bugs": {
+    "url": "https://github.com/phobetron/light-sprite/issues"
+  },
+  "types": "./dist/index.d.ts",
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "src"
+  ],
+  "engines": {
+    "node": "^20.19.0 || >=22.12.0"
+  },
+  "packageManager": "pnpm@12.7.0",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "rslib build",
+    "build:demo": "rsbuild build",
+    "prepack": "pnpm build",
+    "dev": "rsbuild dev",
+    "preview": "rsbuild preview",
+    "test": "pnpm build && pnpm build:demo && rstest run && playwright test",
+    "test:list": "rstest list && playwright test --list",
+    "test:unit": "rstest run --project unit",
+    "test:watch": "rstest watch --project unit",
+    "test:package": "pnpm build && rstest run --project package",
+    "test:browser": "pnpm build && pnpm build:demo && playwright test",
+    "validate:publication": "pnpm test:package",
+    "benchmark:movement": "pnpm build && tsx benchmarks/movement.bench.ts",
+    "typecheck": "tsc --noEmit --project tsconfig.typecheck.json"
+  },
+  "devDependencies": {
+    "@rsbuild/core": "2.2.9",
+    "@rslib/core": "1.0.2",
+    "@rstest/core": "0.12.2",
+    "@types/node": "20.19.43",
+    "playwright": "1.63.0",
+    "tsx": "4.23.15",
+    "typescript": "5.9.3"
+  }
+}

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#10141c" />
+    <title>Light Sprite — a point of light</title>
+  </head>
+  <body>
+    <main>
+      <header>
+        <p class="eyebrow">Light Sprite</p>
+        <h1>A point of light.</h1>
+        <p class="intro">A small white marker illuminates a rough gray cylinder and a glossy red cylinder. Explore the highlights and compare the scene with its light switched off.</p>
+      </header>
+      <section class="scene" aria-label="Interactive lighting scene">
+        <canvas id="scene" width="1000" height="650" tabindex="0" aria-label="Orbit view of two cylinders and a white light marker" aria-describedby="instructions">
+          Your browser needs canvas and WebGL2 support to display this scene.
+        </canvas>
+        <div class="toolbar">
+          <label class="light-toggle"><input id="marker-light" type="checkbox" checked /> Marker light</label>
+          <label class="light-toggle"><input id="shadows" type="checkbox" checked /> Shadows</label>
+          <label class="light-toggle"><input id="glow" type="checkbox" checked /> Glow</label>
+          <label class="light-toggle"><input id="flicker" type="checkbox" /> Flicker</label>
+          <label class="light-toggle"><input id="movement" type="checkbox" checked /> Movement</label>
+          <button id="reset-marker" type="button">Reset marker</button>
+          <button id="reset-view" type="button">Reset view</button>
+        </div>
+        <details class="effect-settings">
+          <summary>Effect settings</summary>
+          <div class="effect-grid">
+            <div class="effect-control">
+              <label for="movement-speed">Movement pace</label><output id="movement-speed-value" for="movement-speed" aria-hidden="true">1.00×</output>
+              <input id="movement-speed" type="range" min="0.25" max="3" step="0.25" value="1" />
+            </div>
+            <div class="effect-control">
+              <label for="movement-variation">Speed variation (%)</label><output id="movement-variation-value" for="movement-variation" aria-hidden="true">45%</output>
+              <input id="movement-variation" type="range" min="0" max="90" step="5" value="45" />
+            </div>
+            <div class="effect-control">
+              <label for="movement-stops">Stop chance (%)</label><output id="movement-stops-value" for="movement-stops" aria-hidden="true">25%</output>
+              <input id="movement-stops" type="range" min="0" max="100" step="5" value="25" />
+            </div>
+            <div class="effect-control">
+              <label for="glow-radius">Glow radius (cm)</label><output id="glow-radius-value" for="glow-radius" aria-hidden="true">25 cm</output>
+              <input id="glow-radius" type="range" min="10" max="100" step="5" value="25" />
+            </div>
+            <div class="effect-control">
+              <label for="glow-intensity">Glow intensity</label><output id="glow-intensity-value" for="glow-intensity" aria-hidden="true">0.6</output>
+              <input id="glow-intensity" type="range" min="0" max="2" step="0.1" value="0.6" />
+            </div>
+            <div class="effect-control">
+              <label for="flicker-depth">Flicker strength (%)</label><output id="flicker-depth-value" for="flicker-depth" aria-hidden="true">35%</output>
+              <input id="flicker-depth" type="range" min="0" max="100" step="5" value="35" disabled />
+            </div>
+            <div class="effect-control">
+              <label for="flicker-speed">Flicker speed (changes/s)</label><output id="flicker-speed-value" for="flicker-speed" aria-hidden="true">2/s</output>
+              <input id="flicker-speed" type="range" min="0.25" max="8" step="0.25" value="2" disabled />
+            </div>
+          </div>
+        </details>
+      </section>
+      <div class="caption">
+        <p id="instructions">Drag to orbit. On a keyboard, focus the scene and use the arrow keys.</p>
+        <p>4 m cylinders · 1 m gap · 10 cm marker · 16 × 5 × 16 m movement area</p>
+      </div>
+      <p id="status" role="status" aria-live="polite">Loading scene…</p>
+    </main>
+  </body>
+</html>
